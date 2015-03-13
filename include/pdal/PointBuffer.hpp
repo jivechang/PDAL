@@ -579,7 +579,6 @@ inline void PointBuffer::appendPoint(const PointBuffer& buffer, PointId id)
 {
     // Invalid 'id' is a programmer error.
     PointId rawId = buffer.m_index[id];
-    point_count_t newid = size();
     m_index.push_back(rawId);
     m_size++;
     assert(m_temps.empty());
