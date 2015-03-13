@@ -219,7 +219,7 @@ uint32_t Support::diff_files(std::istream& str1, std::istream& str2,
     uint32_t numdiffs = 0;
     char p, q;
 
-    for (uint32_t i = 0; true; ++i)
+    for (uint32_t i = 0; ; ++i)
     {
         str1.get(p);
         str2.get(q);
