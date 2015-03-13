@@ -133,8 +133,7 @@ private:
     void outputRST(boost::property_tree::ptree const&) const;
     void outputXML(boost::property_tree::ptree const&) const;
     void outputJSON(boost::property_tree::ptree const&) const;
-    void outputDetail(PointBuffer& source_data, PointBuffer& candidate_data,
-        std::map<Point, Point> *points) const;
+    void outputDetail(PointBuffer& source_data, PointBuffer& candidate_data) const;
 
 };
 

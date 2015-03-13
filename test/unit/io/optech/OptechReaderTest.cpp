@@ -77,7 +77,7 @@ TEST(OptechReader, Constructor)
 
     StageFactory f;
     std::unique_ptr<Stage> reader2(f.createStage("readers.optech"));
-    EXPECT_TRUE(reader2.get());
+    EXPECT_TRUE(reader2.get() != 0);
 }
 
 
@@ -90,7 +90,7 @@ TEST_F(OptechReaderTest, Header)
     EXPECT_STREQ("CSD", header.signature);
     EXPECT_STREQ("Optech Incorporated", header.vendorId);
     EXPECT_STREQ("DASHMap", header.softwareVersion);
-    EXPECT_FLOAT_EQ(5.2010002, header.formatVersion);
+    EXPECT_DOUBLE_EQ(5.2010002, header.formatVersion);
     EXPECT_EQ(2048, header.headerSize);
     EXPECT_EQ(1660u, header.gpsWeek);
     EXPECT_DOUBLE_EQ(575644.74484563898, header.minTime);

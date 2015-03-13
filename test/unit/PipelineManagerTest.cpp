@@ -62,7 +62,7 @@ TEST(PipelineManagerTest, basic)
     point_count_t np = mgr.execute();
     EXPECT_TRUE(np == 1065U);
 
-    EXPECT_TRUE(bool(std::ifstream(outfile)));
+    EXPECT_TRUE(bool(std::ifstream(outfile)) != 0);
     FileUtils::deleteFile(outfile);
 }
 

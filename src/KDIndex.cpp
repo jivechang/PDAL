@@ -72,7 +72,6 @@ double KDIndex::kdtree_get_pt(const std::size_t idx, int dim) const
 }
 
 double KDIndex::kdtree_distance(
-        const double *p1,
         const std::size_t idx_p2,
         std::size_t size) const
 {

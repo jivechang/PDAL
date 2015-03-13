@@ -192,8 +192,6 @@ void TextWriter::writeCSVHeader(PointContextRef ctx)
 
 void TextWriter::writeCSVBuffer(const PointBuffer& data)
 {
-    uint32_t pointIndex(0);
-
     for (PointId idx = 0; idx < data.size(); ++idx)
     {
         for (auto di = m_dims.begin(); di != m_dims.end(); ++di)

@@ -139,21 +139,13 @@ std::map<Point, Point>* cumulatePoints(PointBuffer& source_data,
         Point s(sx, sy, sz, i);
         Point c(cx, cy, cz, id);
         output->insert(std::pair<Point, Point>(s, c));
-
-        double xd = sx - cx;
-        double yd = sy - cy;
-        double zd = sz - cz;
     }
 
     return output;
 }
 
-void DeltaKernel::outputDetail(PointBuffer& source_data, PointBuffer& candidate_data,
-    std::map<Point, Point> *points) const
+void DeltaKernel::outputDetail(PointBuffer& source_data, PointBuffer& candidate_data) const
 {
-
-    bool bWroteHeader(false);
-
     std::ostream& ostr = m_outputStream ? *m_outputStream : std::cout;
 
     uint32_t count(std::min(source_data.size(), candidate_data.size()));
@@ -230,9 +222,6 @@ void DeltaKernel::outputDetail(PointBuffer& source_data, PointBuffer& candidate_
 
         ostr << std::endl;
     }
-
-
-
 
     if (m_outputStream)
     {
@@ -325,7 +314,7 @@ int DeltaKernel::execute()
         points(cumulatePoints(*sourceBuf, *candidateBuf, m_index.get()));
     if (m_OutputDetail)
     {
-        outputDetail(*sourceBuf, *candidateBuf, points.get());
+        outputDetail(*sourceBuf, *candidateBuf);
         return 0;
     }
 

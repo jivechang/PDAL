@@ -61,7 +61,6 @@ public:
     double kdtree_get_pt(const std::size_t idx, int dim) const;
 
     double kdtree_distance(
-            const double *p1,
             const std::size_t idx_p2,
             std::size_t size) const;
 
@@ -71,7 +70,6 @@ public:
         if (bounds.empty())
             return false;
 
-        std::size_t nDims = m_3d ? 3 : 2;
         bb[0].low = bounds.minx;
         bb[0].high = bounds.maxx;
         bb[1].low = bounds.miny;

@@ -64,7 +64,7 @@ TEST(NitfReaderTest, test_one)
     PointContext ctx;
 
     std::shared_ptr<Stage> nitf_reader(f.createStage("readers.nitf"));
-    EXPECT_TRUE(nitf_reader.get());
+    EXPECT_TRUE(nitf_reader.get() != 0);
     nitf_reader->setOptions(nitf_opts);
     nitf_reader->prepare(ctx);
     PointBufferSet pbSet = nitf_reader->execute(ctx);
@@ -91,7 +91,7 @@ TEST(NitfReaderTest, test_one)
     PointContext ctx2;
 
     std::shared_ptr<Stage> las_reader(f.createStage("readers.las"));
-    EXPECT_TRUE(las_reader.get());
+    EXPECT_TRUE(las_reader.get() != 0);
     las_reader->setOptions(las_opts);
     las_reader->prepare(ctx2);
     PointBufferSet pbSet2 = las_reader->execute(ctx2);
@@ -156,7 +156,7 @@ TEST(NitfReaderTest, optionSrs)
     PointContext ctx;
 
     std::shared_ptr<Stage> nitfReader(f.createStage("readers.nitf"));
-    EXPECT_TRUE(nitfReader.get());
+    EXPECT_TRUE(nitfReader.get() != 0);
     nitfReader->setOptions(nitfOpts);
 
     Options lasOpts;
