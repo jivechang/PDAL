@@ -64,10 +64,15 @@ struct DimInfo
 };
 typedef std::shared_ptr<DimInfo> DimInfoPtr;
 
+
 // This provides a context for processing a set of points and allows the library
 // to be used to process multiple point sets simultaneously.
 class PointContext
 {
+    static const int SHARE_DIMS = 1;
+    static const int SHARE_POINTS = 2;
+    static const int SHARE_METADATA = 4;
+
     friend class PointBuffer;
     friend class plang::BufferedInvocation;
 private:
@@ -78,8 +83,17 @@ private:
     MetadataPtr m_metadata;
 
 public:
-    PointContext() : m_dims(new DimInfo()), m_ptBuf(new RawPtBuf()),
+    PointContext() : m_dims(new DimInfo), m_ptBuf(new RawPtBuf),
         m_metadata(new Metadata)
+    {}
+
+    PointContext(PointContext& src, unsigned flags) :
+        m_dims((flags & SHARE_DIMS) ?
+            src.m_dims : DimInfoPtr(new DimInfo)),
+        m_ptBuf((flags & SHARE_POINTS) ?
+            src.m_ptBuf : RawPtBufPtr(new RawPtBuf)),
+        m_metadata((flags & SHARE_METADATA) ?
+            src.m_metadata : MetadataPtr(new Metadata))
     {}
 
     RawPtBuf *rawPtBuf() const
