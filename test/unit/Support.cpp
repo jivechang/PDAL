@@ -204,11 +204,6 @@ uint32_t Support::diff_files(const std::string& file1,
             !pdal::FileUtils::fileExists(file2))
         return (std::numeric_limits<uint32_t>::max)();
 
-    uintmax_t len1x = pdal::FileUtils::fileSize(file1);
-    uintmax_t len2x = pdal::FileUtils::fileSize(file2);
-    const size_t len1 = (size_t)len1x; // BUG
-    const size_t len2 = (size_t)len2x;
-
     std::istream* str1 = pdal::FileUtils::openFile(file1);
     std::istream* str2 = pdal::FileUtils::openFile(file2);
 

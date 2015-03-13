@@ -70,7 +70,7 @@ void PcdReader::addDimensions(PointContextRef ctx)
 }
 
 
-point_count_t PcdReader::read(PointBuffer& data, point_count_t count)
+point_count_t PcdReader::read(PointBuffer& data, point_count_t /*count*/)
 {
     pcl::PointCloud<XYZIRGBA>::Ptr cloud(new pcl::PointCloud<XYZIRGBA>);
 
